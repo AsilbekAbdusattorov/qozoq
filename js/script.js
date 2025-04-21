@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const progressText = document.querySelector(".progress-text");
   const languageButtons = document.querySelectorAll(".lang-btn");
 
-  // Translations
+  // Update translations object with new languages
   const translations = {
     ru: {
       formTitle: "Заполните анкету",
       name: "Имя",
       phone: "Телефон",
-      gender: "Выберите Ваш пол",
+      gender: "Введите имя",
       male: "Я Мужчина",
       female: "Я Женщина",
       country: "Выберите Вашу Страну",
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       formTitle: "Анкетаны толтырыңыз",
       name: "Атыңыз",
       phone: "Телефон",
-      gender: "Жынысыңызды таңдаңыз",
+      gender: "Атыңызды енгізіңіз",
       male: "Мен ер адаммын",
       female: "Мен әйел адаммын",
       country: "Еліңізді таңдаңыз",
@@ -92,7 +92,247 @@ document.addEventListener("DOMContentLoaded", function () {
       uploadHint: "Немесе файлды осы жерге апарыңыз",
       remove: "Жою",
     },
+    kg: {
+      formTitle: "Анкетаны толтуруңуз",
+      name: "Атыңыз",
+      phone: "Телефон",
+      gender: "Атыңызды киргизиңиз",
+      male: "Мен эркекмин",
+      female: "Мен аялмын",
+      country: "Өлкөңүздү тандаңыз",
+      selectCountry: "-- Өлкөнү тандаңыз --",
+      region: "Шаарыңызды тандаңыз",
+      selectRegion: "-- Шаары тандаңыз --",
+      age: "Жашыңыз канча?",
+      nationality: "Улутуңуз",
+      prayer: "Намаз окуйсузбу?",
+      beard: "Сакалыңыз барбы?",
+      quran: "Куран окуй аласызбы?",
+      madhhab: "Мазхабыңыз?",
+      maritalStatus: "Үй-бүлөлүк абалы",
+      children: "Балдардын саны",
+      relocation: "Көчүүгө даярсызбы?",
+      desiredWifeAge: "Келген аялыңыздын жашы?",
+      character: "Мүнөзүңүз",
+      height: "Боюңуз (см)",
+      weight: "Салмагыңыз (кг)",
+      education: "Билимиңиз",
+      whatsapp: "WhatsApp номери:",
+      instagram: "Instagram логини:",
+      telegram: "Telegram логини:",
+      aboutMe: "Өзүм жөнүндө:",
+      aboutWife: "Келген аялым жөнүндө:",
+      photo: "Сүрөтүңүздү жүктөңүз",
+      reviewTitle: "Жөнөтүүдөн мурун киргизген маалыматыңызды текшериңиз",
+      next: "Кийинки",
+      prev: "Артка",
+      submit: "Жөнөтүү",
+      yes: "Ооба",
+      no: "Жок",
+      other: "Өз вариантыңыз",
+      uploadHint: "Же файлды бул жерге сүйрөп таштаңыз",
+      remove: "Өчүрүү",
+    },
+    uz: {
+      formTitle: "Anketani to'ldiring",
+      name: "Ismingiz",
+      phone: "Telefon",
+      gender: "Ismingizni kiriting",
+      male: "Men erkakman",
+      female: "Men ayolman",
+      country: "Mamlakatni tanlang",
+      selectCountry: "-- Mamlakatni tanlang --",
+      region: "Shahringizni tanlang",
+      selectRegion: "-- Shaharni tanlang --",
+      age: "Yoshingiz nechida?",
+      nationality: "Millatingiz",
+      prayer: "Namoz o'qiysizmi?",
+      beard: "Soqolingiz bormi?",
+      quran: "Qur'on o'qiy olasizmi?",
+      madhhab: "Mazhabingiz?",
+      maritalStatus: "Oilaviy holat",
+      children: "Farzandlar soni",
+      relocation: "Ko'chishga tayyormisiz?",
+      desiredWifeAge: "Kelajakdagi xotiningiz yoshi?",
+      character: "Xarakteringiz",
+      height: "Bo'yingiz (sm)",
+      weight: "Vazningiz (kg)",
+      education: "Ma'lumotingiz",
+      whatsapp: "WhatsApp raqami:",
+      instagram: "Instagram logini:",
+      telegram: "Telegram logini:",
+      aboutMe: "O'zim haqimda:",
+      aboutWife: "Kelajakdagi xotinim haqida:",
+      photo: "Suratingizni yuklang",
+      reviewTitle: "Yuborishdan oldin kiritilgan ma'lumotlarni tekshiring",
+      next: "Keyingi",
+      prev: "Orqaga",
+      submit: "Yuborish",
+      yes: "Ha",
+      no: "Yo'q",
+      other: "Boshqa variant",
+      uploadHint: "Yoki faylni shu yerga sudrab tashlang",
+      remove: "O'chirish",
+    },
+    en: {
+      formTitle: "Fill out the form",
+      name: "Name",
+      phone: "Phone",
+      gender: "Enter your name",
+      male: "I'm Male",
+      female: "I'm Female",
+      country: "Select your country",
+      selectCountry: "-- Select country --",
+      region: "Select your city",
+      selectRegion: "-- Select your city --",
+      age: "How old are you?",
+      nationality: "Nationality",
+      prayer: "Do you pray?",
+      beard: "Do you have a beard?",
+      quran: "Can you read Quran?",
+      madhhab: "Your Madhhab?",
+      maritalStatus: "Marital status",
+      children: "Number of children",
+      relocation: "Are you ready to relocate?",
+      desiredWifeAge: "Desired wife's age?",
+      character: "Your character",
+      height: "Your height (cm)",
+      weight: "Your weight (kg)",
+      education: "Education",
+      whatsapp: "WhatsApp number:",
+      instagram: "Instagram username:",
+      telegram: "Telegram username:",
+      aboutMe: "About me:",
+      aboutWife: "About future wife:",
+      photo: "Upload your photo",
+      reviewTitle: "Review your information before submitting",
+      next: "Next",
+      prev: "Back",
+      submit: "Submit",
+      yes: "Yes",
+      no: "No",
+      other: "Other",
+      uploadHint: "Or drag and drop file here",
+      remove: "Remove",
+    },
+    eg: {
+      formTitle: "املء الاستمارة",
+      name: "الاسم",
+      phone: "الهاتف",
+      gender: "أدخل اسمك",
+      male: "أنا رجل",
+      female: "أنا امرأة",
+      country: "اختر بلدك",
+      selectCountry: "-- اختر البلد --",
+      region: "اختر مدينتك",
+      selectRegion: "-- اختر المدينة --",
+      age: "كم عمرك؟",
+      nationality: "الجنسية",
+      prayer: "هل تصلي؟",
+      beard: "هل لديك لحية؟",
+      quran: "هل تستطيع قراءة القرآن؟",
+      madhhab: "مذهبك؟",
+      maritalStatus: "الحالة الاجتماعية",
+      children: "عدد الأطفال",
+      relocation: "هل أنت مستعد للانتقال؟",
+      desiredWifeAge: "عمر الزوجة المرغوب؟",
+      character: "شخصيتك",
+      height: "طولك (سم)",
+      weight: "وزنك (كجم)",
+      education: "التعليم",
+      whatsapp: "رقم الواتساب:",
+      instagram: "اسم المستخدم في إنستغرام:",
+      telegram: "اسم المستخدم في تيليجرام:",
+      aboutMe: "عن نفسي:",
+      aboutWife: "عن الزوجة المستقبلية:",
+      photo: "قم بتحميل صورتك",
+      reviewTitle: "راجع معلوماتك قبل الإرسال",
+      next: "التالي",
+      prev: "السابق",
+      submit: "إرسال",
+      yes: "نعم",
+      no: "لا",
+      other: "خيار آخر",
+      uploadHint: "أو اسحب الملف وأسقطه هنا",
+      remove: "إزالة",
+    },
   };
+
+// Faqat bitta til almashtirish logikasi qoldiramiz
+const langSelector = document.querySelector(".lang-selector");
+const selectedLang = document.querySelector(".selected-lang");
+const langItems = document.querySelectorAll(".lang-item");
+
+// Dropdown menyuni boshqarish
+selectedLang.addEventListener("click", function(e) {
+    e.stopPropagation();
+    langSelector.classList.toggle("active");
+});
+
+// Dropdown menyuni yopish
+document.addEventListener("click", function() {
+    langSelector.classList.remove("active");
+});
+
+// Tilni tanlash
+langItems.forEach(item => {
+    item.addEventListener("click", function() {
+        const lang = this.dataset.lang;
+        const flag = this.querySelector(".flag-icon").innerHTML;
+        const name = this.querySelector(".lang-name").textContent;
+
+        // Tanlangan tilni yangilash
+        selectedLang.querySelector(".flag-icon").innerHTML = flag;
+        selectedLang.querySelector(".lang-name").textContent = name;
+
+        // Faol tilni yangilash
+        langItems.forEach(i => i.classList.remove("active"));
+        this.classList.add("active");
+
+        // Dropdown menyuni yopish
+        langSelector.classList.remove("active");
+
+        // Sahifani tarjima qilish
+        translatePage(lang);
+    });
+});
+
+// Tarjima funktsiyasi
+function translatePage(lang) {
+    const translation = translations[lang];
+    if (!translation) return;
+
+    // Matn elementlarini yangilash
+    document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.dataset.translate;
+        if (translation[key]) {
+            el.textContent = translation[key];
+        }
+    });
+
+    // Input placeholderlarni yangilash
+    document.querySelectorAll("[data-placeholder]").forEach(el => {
+        const key = el.dataset.placeholder;
+        if (translation[key]) {
+            el.placeholder = translation[key];
+        }
+    });
+
+    // Select optionlarni yangilash
+    document.querySelectorAll("[data-option]").forEach(el => {
+        const key = el.dataset.option;
+        if (translation[key]) {
+            el.textContent = translation[key];
+        }
+    });
+
+    // Agar sizda boshqa tarjima qilinadigan elementlar bo'lsa, ularni ham shu yerda yangilashingiz kerak
+}
+
+
+
+
+
 
   // Form state
   let currentPage = 1;
@@ -397,14 +637,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function goToNextPage() {
     if (isCurrentPageValid()) {
-        currentPage++;
-        showPage(currentPage);
-        updateNavigation();
-        window.scrollTo(0, 0);
+      currentPage++;
+      showPage(currentPage);
+      updateNavigation();
+      window.scrollTo(0, 0);
     } else {
-        alert('Пожалуйста, заполните все обязательные поля корректно');
+      alert("Пожалуйста, заполните все обязательные поля корректно");
     }
-}
+  }
 
   function validateCurrentPage() {
     // Sahifa elementini topish

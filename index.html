@@ -206,9 +206,54 @@
                 <img src="/img/Logo.png" alt="">
                 <h1>Nikah Space</h1>
             </div>
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="ru">РУС</button>
-                <button class="lang-btn" data-lang="kz">ҚАЗ</button>
+            <div class="language-switcher-v2">
+                <div class="lang-selector">
+                    <button class="selected-lang">
+                        <span class="flag-icon">
+                            <img src="https://flagcdn.com/w20/ru.png" alt="Russian">
+                        </span>
+                        <span class="lang-name">Русский</span>
+                        <span class="lang-arrow">⌄</span>
+                    </button>
+                    <ul class="lang-list">
+                        <li class="lang-item active" data-lang="ru">
+                            <span class="flag-icon">
+                                <img src="https://flagcdn.com/w20/ru.png" alt="Russian">
+                            </span>
+                            <span class="lang-name">Русский</span>
+                        </li>
+                        <li class="lang-item" data-lang="kz">
+                            <span class="flag-icon">
+                                <img src="https://flagcdn.com/w20/kz.png" alt="Kazakh">
+                            </span>
+                            <span class="lang-name">Қазақша</span>
+                        </li>
+                        <li class="lang-item" data-lang="kg">
+                            <span class="flag-icon">
+                                <img src="https://flagcdn.com/w20/kg.png" alt="Kyrgyz">
+                            </span>
+                            <span class="lang-name">Кыргызча</span>
+                        </li>
+                        <li class="lang-item" data-lang="uz">
+                            <span class="flag-icon">
+                                <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek">
+                            </span>
+                            <span class="lang-name">O'zbekcha</span>
+                        </li>
+                        <li class="lang-item" data-lang="en">
+                            <span class="flag-icon">
+                                <img src="https://flagcdn.com/w20/gb.png" alt="English">
+                            </span>
+                            <span class="lang-name">English</span>
+                        </li>
+                        <li class="lang-item" data-lang="eg">
+                            <span class="flag-icon">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="Egyptian">
+                            </span>
+                            <span class="lang-name">مصري</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -218,7 +263,6 @@
             <div class="form-container">
                 <!-- Page 1 -->
                 <div class="form-page active" data-page="1">
-                    <h2 class="form-title">Введите ваши данные</h2>
                     <div class="form-group">
                         <label for="name">Введите имя</label>
                         <input type="text" id="name" placeholder="Имя">
