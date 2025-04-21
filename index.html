@@ -60,13 +60,86 @@
             align-items: center;
         }
 
+        /* Основные стили для кнопок редактирования */
         .edit-block-btn {
-            background: none;
+            background-color: #4CAF50;
+            /* Зеленый цвет */
+            color: white;
             border: none;
-            color: #4CAF50;
+            padding: 8px 16px;
+            border-radius: 20px;
+            /* Скругленные углы */
             cursor: pointer;
             font-size: 14px;
-            text-decoration: underline;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Иконка карандаша (используя Font Awesome) */
+        .edit-block-btn::before {
+            content: "\f303";
+            /* Код иконки карандаша в Font Awesome */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 12px;
+        }
+
+        /* Состояния кнопки */
+        .edit-block-btn:hover {
+            background-color: #45a049;
+            /* Темнее при наведении */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .edit-block-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-block-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Альтернативные цветовые варианты (по желанию) */
+        .edit-block-btn.blue {
+            background-color: #2196F3;
+        }
+
+        .edit-block-btn.blue:hover {
+            background-color: #0b7dda;
+        }
+
+        .edit-block-btn.purple {
+            background-color: #9c27b0;
+        }
+
+        .edit-block-btn.purple:hover {
+            background-color: #7b1fa2;
+        }
+
+        /* Анимация при нажатии */
+        @keyframes buttonClick {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.95);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .edit-block-btn:active {
+            animation: buttonClick 0.3s ease;
         }
 
         .review-item {
