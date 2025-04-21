@@ -396,11 +396,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function goToNextPage() {
-    if (validateCurrentPage()) {
-      currentPage++;
-      showPage(currentPage);
+    if (isCurrentPageValid()) {
+        currentPage++;
+        showPage(currentPage);
+        updateNavigation();
+        window.scrollTo(0, 0);
+    } else {
+        alert('Пожалуйста, заполните все обязательные поля корректно');
     }
-  }
+}
 
   function validateCurrentPage() {
     // Sahifa elementini topish

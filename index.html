@@ -115,6 +115,7 @@
             color: #999;
             margin-top: 0.5rem;
         }
+
         .range-labels {
             display: flex;
             justify-content: space-between;
@@ -698,7 +699,7 @@
             </div>
 
             <div class="form-navigation">
-                <button type="button" class="btn prev-btn" disabled>Назад</button>
+                <button type="button" class="btn prev-btn" disabled style="display: none;">Назад</button>
                 <button type="button" class="btn next-btn">Далее</button>
                 <button type="button" class="btn edit-btn" style="display: none;">Редактировать</button>
                 <button type="button" class="btn submit-btn" style="display: none;">Отправить</button>
@@ -1118,6 +1119,102 @@
         // Initialize form
         showPage(currentPage);
         updateNavigation();
+
+        function updateNavigation() {
+            if (!prevBtn || !nextBtn || !progressBar || !progressText) return;
+
+            // Скрыть кнопку "Назад" на первой странице
+            if (currentPage === 1) {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'inline-block';
+            }
+            prevBtn.disabled = currentPage === 1;
+
+            if (currentPage === formPages.length) {
+                nextBtn.style.display = 'none';
+                const submitBtn = document.querySelector('.submit-btn');
+                if (submitBtn) submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                const submitBtn = document.querySelector('.submit-btn');
+                if (submitBtn) submitBtn.style.display = 'none';
+            }
+
+            // Update progress
+            const progress = ((currentPage - 1) / (formPages.length - 1)) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `Готово: ${currentPage - 1} / ${formPages.length - 1}`;
+        }
+
+        function isCurrentPageValid() {
+            const currentPageElement = document.querySelector(`.form-page[data-page="${currentPage}"]`);
+            if (!currentPageElement) return false;
+
+            switch (currentPage) {
+                case 1:
+                    const name = document.getElementById('name');
+                    const phone = document.getElementById('phone');
+                    if (!name || !name.value.trim()) return false;
+                    if (!phone || !phone.value.trim() || phone.value.length < 10) return false;
+                    break;
+                case 2:
+                    const gender = document.querySelector('input[name="gender"]:checked');
+                    const country = document.getElementById('country');
+                    if (!gender) return false;
+                    if (!country || !country.value) return false;
+                    break;
+                case 3:
+                    const region = document.getElementById('region');
+                    if (!region || !region.value) return false;
+                    if (region.value === "Другая") {
+                        const customCity = document.getElementById('customCity');
+                        if (!customCity || !customCity.value.trim()) return false;
+                    }
+                    break;
+                // Добавьте проверки для других страниц по аналогии
+            }
+            return true;
+        }
+        function updateNavigation() {
+            if (!prevBtn || !nextBtn || !progressBar || !progressText) return;
+
+            // Скрыть кнопку "Назад" на первой странице
+            if (currentPage === 1) {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'inline-block';
+            }
+            prevBtn.disabled = currentPage === 1;
+
+            // Блокировать кнопку "Далее" если страница не валидна
+            nextBtn.disabled = !isCurrentPageValid();
+
+            if (currentPage === formPages.length) {
+                nextBtn.style.display = 'none';
+                const submitBtn = document.querySelector('.submit-btn');
+                if (submitBtn) submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                const submitBtn = document.querySelector('.submit-btn');
+                if (submitBtn) submitBtn.style.display = 'none';
+            }
+
+            // Update progress
+            const progress = ((currentPage - 1) / (formPages.length - 1)) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `Готово: ${currentPage - 1} / ${formPages.length - 1}`;
+        }
+        // Добавьте эти обработчики в код инициализации
+        document.getElementById('name')?.addEventListener('input', updateNavigation);
+        document.getElementById('phone')?.addEventListener('input', updateNavigation);
+        document.querySelectorAll('input[name="gender"]').forEach(radio => {
+            radio.addEventListener('change', updateNavigation);
+        });
+        document.getElementById('country')?.addEventListener('change', updateNavigation);
+        document.getElementById('region')?.addEventListener('change', updateNavigation);
+        document.getElementById('customCity')?.addEventListener('input', updateNavigation);
+        // Добавьте обработчики для других полей по аналогии
     </script>
 </body>
 
