@@ -107,6 +107,21 @@
         .submit-btn:hover {
             background: #45a049;
         }
+
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: gray;
+            font-size: 14px;
+        }
     </style>
 </head>
 
@@ -131,13 +146,13 @@
                 <div class="form-page active" data-page="1">
                     <h2 class="form-title">Введите ваши данные</h2>
                     <div class="form-group">
-                        <label for="name">Имя</label>
-                        <input type="text" id="name" placeholder="Введите имя">
+                        <label for="name">Введите имя</label>
+                        <input type="text" id="name" placeholder="Имя">
                     </div>
                     <div class="form-group">
-                        <label for="phone">Телефон</label>
-                        <input type="tel" id="phone" placeholder="Введите телефон" pattern="[0-9]{10,}"
-                            inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                        <label for="phone">Введите Телефон</label>
+                        <input type="tel" id="phone" placeholder="Tелефон" pattern="[0-9]{10,}" inputmode="numeric"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                         <small style="color: red; display: none;" id="phone-error">Телефон как минимум 10 цифр</small>
                     </div>
 
@@ -196,14 +211,14 @@
                             <option value="Ташкент">Ташкент</option>
                             <option value="Самарканд">Самарканд</option>
                             <option value="Бухара">Бухара</option>
-                            <option value="Другая">Другая (введите вручную)</option>
+                            <option value="Другая">Свой вариант</option>
                         </select>
                     </div>
 
                     <!-- Hidden input, only shown when "Другая" is selected -->
                     <div class="form-group" id="customCityGroup" style="display: none;">
                         <label for="customCity">Введите Ваш город</label>
-                        <input type="text" id="customCity" placeholder="Например: Ташкент">
+                        <input type="text" id="customCity" placeholder="Свой вариант">
                     </div>
                 </div>
 
@@ -211,9 +226,16 @@
                 <div class="form-page" data-page="4">
                     <h2 class="form-title">Заполните анкету</h2>
                     <div class="form-group">
-                        <label for="age">Сколько Вам лет? <span id="age-value">25</span></label>
-                        <input type="range" id="age" name="age" min="18" max="65" value="25"
-                            oninput="document.getElementById('age-value').textContent = this.value">
+                        <input type="text" class="age-display" id="age-value" value="25" readonly />
+
+                        <div class="range-container">
+                            <input type="range" id="age" name="age" min="18" max="65" value="25"
+                                oninput="document.getElementById('age-value').value = this.value" />
+                            <div class="range-labels">
+                                <span>18</span>
+                                <span>65</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -270,7 +292,6 @@
 
                 <!-- Page 6 -->
                 <div class="form-page" data-page="6">
-                    <h2 class="form-title">Заполните анкету</h2>
                     <div class="form-group">
                         <label>Умеете ли Вы читать К`уран?</label>
                         <div class="radio-group">
@@ -315,7 +336,6 @@
 
                 <!-- Page 7 -->
                 <div class="form-page" data-page="7">
-                    <h2 class="form-title">Заполните анкету</h2>
                     <div class="form-group">
                         <label for="children">Количество детей</label>
                         <select id="children">
@@ -344,23 +364,32 @@
                                 <input type="radio" name="relocation" value="other"> Свой вариант
                             </label>
                         </div>
-                        <input type="text" name="relocation-other" class="other-input" placeholder="Укажите ваш вариант"
+                        <input type="text" name="relocation-other" class="other-input" placeholder="Свой вариант"
                             style="display: none;">
                     </div>
                 </div>
 
                 <!-- Page 8 -->
                 <div class="form-page" data-page="8">
-                    <h2 class="form-title">Заполните анкету</h2>
                     <div class="form-group">
                         <label for="desired-wife-age">Возраст Будущей жены?</label>
+
+                        <input type="text" class="age-display" id="desired-wife-age-value" value="30" readonly />
+
                         <div class="range-slider">
-                            <input type="range" id="desired-wife-age" min="18" max="65" value="18">
-                            <div class="range-values">
-                                <span id="age-value">18</span>
+                            <div class="range-container">
+                                <input type="range" id="desired-wife-age" min="18" max="65" value="30"
+                                    oninput="document.getElementById('desired-wife-age-value').value = this.value" />
+                                <div class="range-labels">
+                                    <span>18</span>
+                                    <span>65</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="form-group">
                         <label>Ваш Характер</label>
                         <div class="checkbox-group">
