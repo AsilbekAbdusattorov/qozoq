@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Nikah Space</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div class="container">
+            <h1>Nikah Space Admin</h1>
+            <nav>
+                <a href="/admin" class="active">Submissions</a>
+                <a href="/admin/users">Users</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <div class="container">
+            <div class="admin-toolbar">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search submissions...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-controls">
+                    <select id="country-filter">
+                        <option value="">All Countries</option>
+                        <option value="kazakhstan">Kazakhstan</option>
+                        <option value="kyrgyzstan">Kyrgyzstan</option>
+                        <option value="uzbekistan">Uzbekistan</option>
+                        <option value="russia">Russia</option>
+                        <option value="indonesia">Indonesia</option>
+                    </select>
+                    <select id="gender-filter">
+                        <option value="">All Genders</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <select id="status-filter">
+                        <option value="">All Statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="submissions-table-container">
+                <table class="submissions-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Country</th>
+                            <th>Gender</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="submissions-body">
+                        <!-- Data will be loaded here -->
+                        <tr>
+                            <td colspan="8" class="loading-message">Loading submissions...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button id="prev-page" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                <span id="page-info">Page 1 of 1</span>
+                <button id="next-page" disabled>Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Submission Detail Modal -->
+    <div class="modal" id="submission-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Submission Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="submission-details">
+                <div class="loading-spinner"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="approve-btn" class="btn-approve">Approve</button>
+                <button id="reject-btn" class="btn-reject">Reject</button>
+                <button id="close-btn" class="btn-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Nikah Space - платформа для поиска второй половины согласно исламским традициям">
+    <meta name="keywords"
+        content="Nikah, никах, никях,  сайт знакомств для мусульман, неке, неке сайт, nikoh, Никах Казахстан, Неке Казахстан">
+    <meta name="author" content="Nikah Space">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nikahspace.com/">
+    <meta property="og:title" content="Nikah Space - Анкета">
+    <meta property="og:description"
+        content="Nikah Space - платформа для поиска второй половины согласно исламским традициям">
+    <meta property="og:image" content="https://nikahspace.com/images/og-image.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nikahspace.com/">
+    <meta name="twitter:title" content="Nikah Space - Анкета">
+    <meta name="twitter:description"
+        content="Nikah Space - платформа для поиска второй половины согласно исламским традициям">
+    <meta name="twitter:image" content="https://nikahspace.com/images/twitter-image.jpg">
+
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Nikah Space - Анкета</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Review page styles */
+        .review-section {
+            margin-top: 20px;
+        }
+
+        .review-block {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .review-block h3 {
+            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .edit-block-btn {
+            background: none;
+            border: none;
+            color: #4CAF50;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .review-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .review-label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .review-value {
+            color: #333;
+        }
+
+        .submit-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/img/Logo.png" alt="">
+                <h1>Nikah Space</h1>
+            </div>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="ru">РУС</button>
+                <button class="lang-btn" data-lang="kz">ҚАЗ</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <!-- Page 1 -->
+                <div class="form-page active" data-page="1">
+                    <h2 class="form-title">Введите ваши данные</h2>
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" placeholder="Введите имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" placeholder="Введите телефон" pattern="[0-9]{10,}"
+                            inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                        <small style="color: red; display: none;" id="phone-error">Телефон как минимум 10 цифр</small>
+                    </div>
+
+                    <script>
+                        const phoneInput = document.getElementById('phone');
+                        const phoneError = document.getElementById('phone-error');
+
+                        phoneInput.addEventListener('input', () => {
+                            if (phoneInput.value.length >= 10) {
+                                phoneError.style.display = 'none';
+                                phoneInput.setCustomValidity('');
+                            } else {
+                                phoneError.style.display = 'block';
+                                phoneInput.setCustomValidity('Введите как минимум 10 цифр');
+                            }
+                        });
+                    </script>
+
+                </div>
+
+                <!-- Page 2 -->
+                <div class="form-page" data-page="2">
+                    <h2 class="form-title">Заполните анкету</h2>
+                    <div class="form-group">
+                        <label>Выберите Ваш пол</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="male"> Я Мужчина
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="female"> Я Женщина
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Выберите Вашу Страну</label>
+                        <select id="country">
+                            <option value="">-- Выберите страну --</option>
+                            <option value="kazakhstan">Казахстан</option>
+                            <option value="kyrgyzstan">Киргизия</option>
+                            <option value="uzbekistan">Узбекистан</option>
+                            <option value="russia">Россия</option>
+                            <option value="indonesia">Индонезия</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Page 3 -->
+                <div class="form-page" data-page="3">
+                    <h2 class="form-title">Заполните анкету</h2>
+
+                    <div class="form-group">
+                        <label for="region">Выберите Ваш город</label>
+                        <select id="region">
+                            <option value="">-- Выберите Ваш город --</option>
+                            <option value="Ташкент">Ташкент</option>
+                            <option value="Самарканд">Самарканд</option>
+                            <option value="Бухара">Бухара</option>
+                            <option value="Другая">Другая (введите вручную)</option>
+                        </select>
+                    </div>
+
+                    <!-- Hidden input, only shown when "Другая" is selected -->
+                    <div class="form-group" id="customCityGroup" style="display: none;">
+                        <label for="customCity">Введите Ваш город</label>
+                        <input type="text" id="customCity" placeholder="Например: Ташкент">
+                    </div>
+                </div>
+
+                <!-- Page 4 -->
+                <div class="form-page" data-page="4">
+                    <h2 class="form-title">Заполните анкету</h2>
+                    <div class="form-group">
+                        <label for="age">Сколько Вам лет? <span id="age-value">25</span></label>
+                        <input type="range" id="age" name="age" min="18" max="65" value="25"
+                            oninput="document.getElementById('age-value').textContent = this.value">
+                    </div>
+                </div>
+
+
+                <!-- Page 5 -->
+                <div class="form-page" data-page="5">
+                    <h2 class="form-title">Заполните анкету</h2>
+                    <div class="form-group">
+                        <label for="nationality">Национальность</label>
+                        <select id="nationality">
+                            <option value="kazakh">Казах</option>
+                            <option value="kyrgyz">Киргиз</option>
+                            <option value="uzbek">Узбек</option>
+                            <option value="russian">Русский</option>
+                            <option value="indonesian">Индонезиец</option>
+                            <option value="other">Свой вариант</option>
+                        </select>
+                        <input type="text" id="other-nationality" class="other-input"
+                            placeholder="Укажите вашу национальность" style="display: none;">
+                    </div>
+                    <div class="form-group">
+                        <label>Читаете ли Вы намаз?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="prayer" value="yes"> Да
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="prayer" value="no"> Нет
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="prayer" value="other"> Свой вариант
+                            </label>
+                        </div>
+                        <input type="text" name="prayer-other" class="other-input" placeholder="Укажите ваш вариант"
+                            style="display: none;">
+                    </div>
+                    <div class="form-group">
+                        <label>Носите ли Вы бороду?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="beard" value="yes"> Да
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="beard" value="no"> Нет
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="beard" value="other"> Свой вариант
+                            </label>
+                        </div>
+                        <input type="text" name="beard-other" class="other-input" placeholder="Укажите ваш вариант"
+                            style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Page 6 -->
+                <div class="form-page" data-page="6">
+                    <h2 class="form-title">Заполните анкету</h2>
+                    <div class="form-group">
+                        <label>Умеете ли Вы читать К`уран?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="quran" value="yes"> Да
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="quran" value="no"> Нет
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="quran" value="other"> Свой вариант
+                            </label>
+                        </div>
+                        <input type="text" name="quran-other" class="other-input" placeholder="Укажите ваш вариант"
+                            style="display: none;">
+                    </div>
+                    <div class="form-group">
+                        <label for="madhhab">Ваш Мазхаб?</label>
+                        <select id="madhhab">
+                            <option value="hanafi">Абу Ханифа</option>
+                            <option value="other">Свой вариант</option>
+                        </select>
+                        <input type="text" id="other-madhhab" class="other-input" placeholder="Укажите ваш мазхаб"
+                            style="display: none;">
+                    </div>
+                    <div class="form-group">
+                        <label for="marital-status">Семейное положение</label>
+                        <select id="marital-status">
+                            <option value="never-married">Не женат (Не был женат)</option>
+                            <option value="single">Холост</option>
+                            <option value="divorced">Разведен</option>
+                            <option value="widowed">Вдовец</option>
+                            <option value="second-wife">Ищу 2-ую жену</option>
+                            <option value="third-wife">Ищу 3-ую жену</option>
+                            <option value="fourth-wife">Ищу 4-ую жену</option>
+                            <option value="other">Свой вариант</option>
+                        </select>
+                        <input type="text" id="other-marital-status" class="other-input"
+                            placeholder="Укажите ваш вариант" style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Page 7 -->
+                <div class="form-page" data-page="7">
+                    <h2 class="form-title">Заполните анкету</h2>
+                    <div class="form-group">
+                        <label for="children">Количество детей</label>
+                        <select id="children">
+                            <option value="none">Детей нет</option>
+                            <option value="live-separately">Живут отдельно</option>
+                            <option value="with-mom">Живут с Мамой</option>
+                            <option value="not-with-me">Не живут со мной</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="other">Свой вариант</option>
+                        </select>
+                        <input type="text" id="other-children" class="other-input" placeholder="Укажите ваш вариант"
+                            style="display: none;">
+                    </div>
+                    <div class="form-group">
+                        <label>Готовы ли Вы к переезду?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="relocation" value="yes"> Да
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="relocation" value="no"> Нет
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="relocation" value="other"> Свой вариант
+                            </label>
+                        </div>
+                        <input type="text" name="relocation-other" class="other-input" placeholder="Укажите ваш вариант"
+                            style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Page 8 -->
+                <div class="form-page" data-page="8">
+                    <h2 class="form-title">Заполните анкету</h2>
+                    <div class="form-group">
+                        <label for="desired-wife-age">Возраст Будущей жены?</label>
+                        <div class="range-slider">
+                            <input type="range" id="desired-wife-age" min="18" max="65" value="18">
+                            <div class="range-values">
+                                <span id="age-value">18</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ваш Характер</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="character" value="good"> Хороший
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="character" value="kind"> Добрый
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="character" value="caring"> Заботливый
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="character" value="modest"> Скромный
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="character" value="other"> Свой вариант
+                            </label>
+                        </div>
+                        <input type="text" name="character-other" class="other-input" placeholder="Опишите ваш характер"
+                            style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Page 9 -->
+                <div class="form-page" data-page="9">
+                    <h2 class="form-title">Заполните анкету</h2>
+                    <div class="form-group">
+                        <label for="height">Ваш Рост (в сантиметрах): <span id="heightValue">185</span> см</label>
+                        <input type="range" id="height" min="150" max="220" value="185">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight">Ваш Вес (в килограммах): <span id="weightValue">70</span> кг</label>
+                        <input type="range" id="weight" min="45" max="120" value="70">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="education">Образование</label>
+                        <select id="education">
+                            <option value="higher">Высшее</option>
+                            <option value="technical">Техническое</option>
+                            <option value="secondary-technical">Средне техническое</option>
+                            <option value="9-classes">9 классов</option>
+                            <option value="11-classes">11 классов</option>
+                            <option value="university">Университет</option>
+                            <option value="madrasah">Медресе</option>
+                            <option value="other">Свой вариант</option>
+                        </select>
+                        <input type="text" id="other-education" class="other-input" placeholder="Укажите ваш вариант"
+                            style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Page 10 -->
+                <div class="form-page" data-page="10">
+                    <h2 class="form-title">Контактная информация</h2>
+                    <div class="form-group">
+                        <label for="whatsapp">Номер в WhatsApp:</label>
+                        <input type="tel" id="whatsapp" placeholder="Введите номер WhatsApp">
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Логин в Instagram:</label>
+                        <input type="text" id="instagram" placeholder="Введите логин Instagram">
+                    </div>
+                    <div class="form-group">
+                        <label for="telegram">Логин в Telegram:</label>
+                        <input type="text" id="telegram" placeholder="Введите логин Telegram">
+                    </div>
+                </div>
+
+                <!-- Page 11 -->
+                <div class="form-page" data-page="11">
+                    <h2 class="form-title">Дополнительная информация</h2>
+                    <div class="form-group">
+                        <label for="about-me">О себе:</label>
+                        <textarea id="about-me" rows="4" placeholder="Расскажите о себе"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="about-wife">О будущей жене:</label>
+                        <textarea id="about-wife" rows="4"
+                            placeholder="Опишите, какой вы видите будущую жену"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Загрузите свою фотографию (она не будет показана другим пользователям и нужна
+                            только для проверки, что вы реальный человек)</label>
+                        <div class="file-upload">
+                            <input type="file" id="photo" accept="image/*">
+                            <label for="photo" class="upload-btn">
+                                <i class="fas fa-cloud-upload-alt"></i> Нажмите, чтобы загрузить файл
+                            </label>
+                            <p class="upload-hint">Или перетяните его из папки в это поле</p>
+                            <div class="preview-container" id="preview-container" style="display: none;">
+                                <img id="preview-image" src="#" alt="Preview">
+                                <button type="button" class="remove-btn" id="remove-photo">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Page -->
+                <div class="form-page" data-page="12">
+                    <h2 class="form-title">Проверьте введённые данные перед отправкой</h2>
+
+                    <div class="review-section">
+                        <div id="review-data" style="display: none;"></div>
+                        <!-- Personal Data Block -->
+                        <div class="review-block">
+                            <h3>
+                                1. Введите ваши данные
+                                <button class="edit-block-btn" data-page="1">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Имя:</div>
+                                <div class="review-value" id="review-name"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Телефон:</div>
+                                <div class="review-value" id="review-phone"></div>
+                            </div>
+                        </div>
+
+                        <!-- Basic Data Block -->
+                        <div class="review-block">
+                            <h3>
+                                2. Основные данные
+                                <button class="edit-block-btn" data-page="2">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Пол:</div>
+                                <div class="review-value" id="review-gender"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Страна:</div>
+                                <div class="review-value" id="review-country"></div>
+                            </div>
+                        </div>
+
+                        <!-- Location Block -->
+                        <div class="review-block">
+                            <h3>
+                                3. Местоположение
+                                <button class="edit-block-btn" data-page="3">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Город:</div>
+                                <div class="review-value" id="review-city"></div>
+                            </div>
+                        </div>
+
+                        <!-- Age Block -->
+                        <div class="review-block">
+                            <h3>
+                                4. Возраст
+                                <button class="edit-block-btn" data-page="4">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Возраст:</div>
+                                <div class="review-value" id="review-age"></div>
+                            </div>
+                        </div>
+
+                        <!-- Religious Data Block -->
+                        <div class="review-block">
+                            <h3>
+                                5. Религиозные данные
+                                <button class="edit-block-btn" data-page="5">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Национальность:</div>
+                                <div class="review-value" id="review-nationality"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Читаете намаз:</div>
+                                <div class="review-value" id="review-prayer"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Носите бороду:</div>
+                                <div class="review-value" id="review-beard"></div>
+                            </div>
+                        </div>
+                        <!-- Add these inside the review-section div -->
+
+                        <!-- Page 6 Review Block -->
+                        <div class="review-block">
+                            <h3>
+                                6. Религиозные данные
+                                <button class="edit-block-btn" data-page="6">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Чтение Корана:</div>
+                                <div class="review-value" id="review-quran"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Мазхаб:</div>
+                                <div class="review-value" id="review-madhhab"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Семейное положение:</div>
+                                <div class="review-value" id="review-marital-status"></div>
+                            </div>
+                        </div>
+
+                        <!-- Page 7 Review Block -->
+                        <div class="review-block">
+                            <h3>
+                                7. Семейные данные
+                                <button class="edit-block-btn" data-page="7">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Дети:</div>
+                                <div class="review-value" id="review-children"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Готовность к переезду:</div>
+                                <div class="review-value" id="review-relocation"></div>
+                            </div>
+                        </div>
+
+                        <!-- Page 8 Review Block -->
+                        <div class="review-block">
+                            <h3>
+                                8. Предпочтения
+                                <button class="edit-block-btn" data-page="8">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Желаемый возраст жены:</div>
+                                <div class="review-value" id="review-desired-age"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Характер:</div>
+                                <div class="review-value" id="review-character"></div>
+                            </div>
+                        </div>
+
+                        <!-- Page 9 Review Block -->
+                        <div class="review-block">
+                            <h3>
+                                9. Физические данные
+                                <button class="edit-block-btn" data-page="9">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">Рост:</div>
+                                <div class="review-value" id="review-height"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Вес:</div>
+                                <div class="review-value" id="review-weight"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Образование:</div>
+                                <div class="review-value" id="review-education"></div>
+                            </div>
+                        </div>
+
+                        <!-- Page 10 Review Block -->
+                        <div class="review-block">
+                            <h3>
+                                10. Контактная информация
+                                <button class="edit-block-btn" data-page="10">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">WhatsApp:</div>
+                                <div class="review-value" id="review-whatsapp"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Instagram:</div>
+                                <div class="review-value" id="review-instagram"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Telegram:</div>
+                                <div class="review-value" id="review-telegram"></div>
+                            </div>
+                        </div>
+
+                        <!-- Page 11 Review Block -->
+                        <div class="review-block">
+                            <h3>
+                                11. Дополнительная информация
+                                <button class="edit-block-btn" data-page="11">Изменить</button>
+                            </h3>
+                            <div class="review-item">
+                                <div class="review-label">О себе:</div>
+                                <div class="review-value" id="review-about-me"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">О будущей жене:</div>
+                                <div class="review-value" id="review-about-wife"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-label">Фотография:</div>
+                                <div class="review-value" id="review-photo"></div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="submit-btn">Отправить анкету</button>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%;"></div>
+                    </div>
+                    <span class="progress-text">Готово: 0 / 11</span>
+                </div>
+            </div>
+
+            <div class="form-navigation">
+                <button type="button" class="btn prev-btn" disabled>Назад</button>
+                <button type="button" class="btn next-btn">Далее</button>
+                <button type="button" class="btn edit-btn" style="display: none;">Редактировать</button>
+                <button type="button" class="btn submit-btn" style="display: none;">Отправить</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2023 Nikah Space. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" title="Наверх">↑</button>
+    <script src="js/script.js"></script>
+    <script>
+        // DOM elements
+        const heightSlider = document.getElementById("height");
+        const heightValue = document.getElementById("heightValue");
+        const weightSlider = document.getElementById("weight");
+        const weightValue = document.getElementById("weightValue");
+        const regionSelect = document.getElementById("region");
+        const customCityGroup = document.getElementById("customCityGroup");
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        const desiredWifeAgeSlider = document.getElementById("desired-wife-age");
+        const ageValueSpan = document.getElementById("age-value");
+
+        // Initialize values
+        if (heightSlider && heightValue) {
+            heightValue.textContent = heightSlider.value;
+            heightSlider.addEventListener("input", function () {
+                heightValue.textContent = this.value;
+            });
+        }
+
+        if (weightSlider && weightValue) {
+            weightValue.textContent = weightSlider.value;
+            weightSlider.addEventListener("input", function () {
+                weightValue.textContent = this.value;
+            });
+        }
+
+        if (desiredWifeAgeSlider && ageValueSpan) {
+            ageValueSpan.textContent = desiredWifeAgeSlider.value;
+            desiredWifeAgeSlider.addEventListener("input", function () {
+                ageValueSpan.textContent = this.value;
+            });
+        }
+
+        if (regionSelect && customCityGroup) {
+            regionSelect.addEventListener("change", function () {
+                customCityGroup.style.display = this.value === "Другая" ? "block" : "none";
+            });
+        }
+
+        // Form navigation
+        const formPages = document.querySelectorAll('.form-page');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const progressBar = document.querySelector('.progress');
+        const progressText = document.querySelector('.progress-text');
+        let currentPage = 1;
+
+        function updateNavigation() {
+            if (!prevBtn || !nextBtn || !progressBar || !progressText) return;
+
+            prevBtn.disabled = currentPage === 1;
+
+            if (currentPage === formPages.length) {
+                nextBtn.style.display = 'none';
+                const submitBtn = document.querySelector('.submit-btn');
+                if (submitBtn) submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                const submitBtn = document.querySelector('.submit-btn');
+                if (submitBtn) submitBtn.style.display = 'none';
+            }
+
+            // Update progress
+            const progress = ((currentPage - 1) / (formPages.length - 1)) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `Готово: ${currentPage - 1} / ${formPages.length - 1}`;
+        }
+
+        function showPage(pageNumber) {
+            formPages.forEach(page => {
+                page.classList.remove('active');
+                if (parseInt(page.dataset.page) === pageNumber) {
+                    page.classList.add('active');
+                }
+            });
+
+            // When showing review page, populate the data
+            if (pageNumber === 12) {
+                populateReviewData();
+            }
+        }
+
+        function validateCurrentPage() {
+            const currentPageElement = document.querySelector(`.form-page[data-page="${currentPage}"]`);
+            if (!currentPageElement) return false;
+
+            // Validate required fields for each page
+            switch (currentPage) {
+                case 1:
+                    const name = document.getElementById('name');
+                    const phone = document.getElementById('phone');
+                    if (!name || !name.value.trim()) {
+                        alert('Пожалуйста, введите ваше имя');
+                        return false;
+                    }
+                    if (!phone || !phone.value.trim()) {
+                        alert('Пожалуйста, введите ваш телефон');
+                        return false;
+                    }
+                    break;
+                case 2:
+                    const gender = document.querySelector('input[name="gender"]:checked');
+                    const country = document.getElementById('country');
+                    if (!gender) {
+                        alert('Пожалуйста, выберите ваш пол');
+                        return false;
+                    }
+                    if (!country || !country.value) {
+                        alert('Пожалуйста, выберите вашу страну');
+                        return false;
+                    }
+                    break;
+                case 3:
+                    const region = document.getElementById('region');
+                    let cityValid = true;
+                    if (!region || !region.value) {
+                        cityValid = false;
+                    } else if (region.value === "Другая") {
+                        const customCity = document.getElementById('customCity');
+                        if (!customCity || !customCity.value.trim()) {
+                            cityValid = false;
+                        }
+                    }
+                    if (!cityValid) {
+                        alert('Пожалуйста, укажите ваш город');
+                        return false;
+                    }
+                    break;
+                case 4:
+                    const age = document.getElementById('age');
+                    if (!age || !age.value || age.value < 18 || age.value > 65) {
+                        alert('Пожалуйста, введите корректный возраст (18-65)');
+                        return false;
+                    }
+                    break;
+                // Add validation for other pages as needed
+            }
+            return true;
+        }
+
+        function goToNextPage() {
+            if (validateCurrentPage()) {
+                currentPage++;
+                showPage(currentPage);
+                updateNavigation();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', goToNextPage);
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                    updateNavigation();
+                    window.scrollTo(0, 0);
+                }
+            });
+        }
+
+        // Edit block buttons
+        document.querySelectorAll('.edit-block-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const pageToEdit = parseInt(this.dataset.page);
+                currentPage = pageToEdit;
+                showPage(currentPage);
+                updateNavigation();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        function populateReviewData() {
+            // Personal data (Page 1)
+            const nameElement = document.getElementById('name');
+            const phoneElement = document.getElementById('phone');
+            if (nameElement && document.getElementById('review-name')) {
+                document.getElementById('review-name').textContent = nameElement.value || 'Не указано';
+            }
+            if (phoneElement && document.getElementById('review-phone')) {
+                document.getElementById('review-phone').textContent = phoneElement.value || 'Не указано';
+            }
+
+            // Basic data (Page 2)
+            const gender = document.querySelector('input[name="gender"]:checked');
+            if (document.getElementById('review-gender')) {
+                document.getElementById('review-gender').textContent = gender ?
+                    (gender.value === 'male' ? 'Мужчина' : 'Женщина') : 'Не указано';
+            }
+
+            const countryElement = document.getElementById('country');
+            if (countryElement && document.getElementById('review-country')) {
+                document.getElementById('review-country').textContent = countryElement.value || 'Не указано';
+            }
+
+            // Location (Page 3)
+            const regionElement = document.getElementById('region');
+            let city = 'Не указано';
+            if (regionElement) {
+                city = regionElement.value === "Другая"
+                    ? (document.getElementById('customCity')?.value || 'Не указано')
+                    : regionElement.value || 'Не указано';
+            }
+            if (document.getElementById('review-city')) {
+                document.getElementById('review-city').textContent = city;
+            }
+
+            // Age (Page 4)
+            const ageElement = document.getElementById('age');
+            if (ageElement && document.getElementById('review-age')) {
+                document.getElementById('review-age').textContent = ageElement.value || 'Не указано';
+            }
+
+            // Religious data (Page 5)
+            const nationalityElement = document.getElementById('nationality');
+            let nationality = 'Не указано';
+            if (nationalityElement) {
+                nationality = nationalityElement.value === "other"
+                    ? (document.getElementById('other-nationality')?.value || 'Не указано')
+                    : nationalityElement.value || 'Не указано';
+            }
+            if (document.getElementById('review-nationality')) {
+                document.getElementById('review-nationality').textContent = nationality;
+            }
+
+            const prayer = getRadioValueWithOther('prayer');
+            if (document.getElementById('review-prayer')) {
+                document.getElementById('review-prayer').textContent =
+                    prayer === 'yes' ? 'Да' : prayer === 'no' ? 'Нет' : prayer || 'Не указано';
+            }
+
+            const beard = getRadioValueWithOther('beard');
+            if (document.getElementById('review-beard')) {
+                document.getElementById('review-beard').textContent =
+                    beard === 'yes' ? 'Да' : beard === 'no' ? 'Нет' : beard || 'Не указано';
+            }
+
+            // Additional religious data (Page 6)
+            const quran = getRadioValueWithOther('quran');
+            if (document.getElementById('review-quran')) {
+                document.getElementById('review-quran').textContent =
+                    quran === 'yes' ? 'Да' : quran === 'no' ? 'Нет' : quran || 'Не указано';
+            }
+
+            const madhhabElement = document.getElementById('madhhab');
+            let madhhab = 'Не указано';
+            if (madhhabElement) {
+                madhhab = madhhabElement.value === "other"
+                    ? (document.getElementById('other-madhhab')?.value || 'Не указано')
+                    : madhhabElement.value || 'Не указано';
+            }
+            if (document.getElementById('review-madhhab')) {
+                document.getElementById('review-madhhab').textContent = madhhab;
+            }
+
+            const maritalStatusElement = document.getElementById('marital-status');
+            let maritalStatus = 'Не указано';
+            if (maritalStatusElement) {
+                maritalStatus = maritalStatusElement.value === "other"
+                    ? (document.getElementById('other-marital-status')?.value || 'Не указано')
+                    : maritalStatusElement.value || 'Не указано';
+            }
+            if (document.getElementById('review-marital-status')) {
+                document.getElementById('review-marital-status').textContent = maritalStatus;
+            }
+
+            // Family data (Page 7)
+            const childrenElement = document.getElementById('children');
+            let children = 'Не указано';
+            if (childrenElement) {
+                children = childrenElement.value === "other"
+                    ? (document.getElementById('other-children')?.value || 'Не указано')
+                    : childrenElement.value || 'Не указано';
+            }
+            if (document.getElementById('review-children')) {
+                document.getElementById('review-children').textContent = children;
+            }
+
+            const relocation = getRadioValueWithOther('relocation');
+            if (document.getElementById('review-relocation')) {
+                document.getElementById('review-relocation').textContent =
+                    relocation === 'yes' ? 'Да' : relocation === 'no' ? 'Нет' : relocation || 'Не указано';
+            }
+
+            // Preferences (Page 8)
+            if (desiredWifeAgeSlider && document.getElementById('review-desired-age')) {
+                document.getElementById('review-desired-age').textContent = desiredWifeAgeSlider.value;
+            }
+
+            const character = getCheckboxValuesWithOther('character');
+            if (document.getElementById('review-character')) {
+                document.getElementById('review-character').textContent = character || 'Не указано';
+            }
+
+            // Physical attributes (Page 9)
+            if (heightSlider && document.getElementById('review-height')) {
+                document.getElementById('review-height').textContent = `${heightSlider.value} см` || 'Не указано';
+            }
+            if (weightSlider && document.getElementById('review-weight')) {
+                document.getElementById('review-weight').textContent = `${weightSlider.value} кг` || 'Не указано';
+            }
+
+            const educationElement = document.getElementById('education');
+            let education = 'Не указано';
+            if (educationElement) {
+                education = educationElement.value === "other"
+                    ? (document.getElementById('other-education')?.value || 'Не указано')
+                    : educationElement.value || 'Не указано';
+            }
+            if (document.getElementById('review-education')) {
+                document.getElementById('review-education').textContent = education;
+            }
+
+            // Contact info (Page 10)
+            const whatsappElement = document.getElementById('whatsapp');
+            if (whatsappElement && document.getElementById('review-whatsapp')) {
+                document.getElementById('review-whatsapp').textContent = whatsappElement.value || 'Не указано';
+            }
+
+            const instagramElement = document.getElementById('instagram');
+            if (instagramElement && document.getElementById('review-instagram')) {
+                document.getElementById('review-instagram').textContent = instagramElement.value || 'Не указано';
+            }
+
+            const telegramElement = document.getElementById('telegram');
+            if (telegramElement && document.getElementById('review-telegram')) {
+                document.getElementById('review-telegram').textContent = telegramElement.value || 'Не указано';
+            }
+
+            // Additional info (Page 11)
+            const aboutMeElement = document.getElementById('about-me');
+            if (aboutMeElement && document.getElementById('review-about-me')) {
+                document.getElementById('review-about-me').textContent = aboutMeElement.value || 'Не указано';
+            }
+
+            const aboutWifeElement = document.getElementById('about-wife');
+            if (aboutWifeElement && document.getElementById('review-about-wife')) {
+                document.getElementById('review-about-wife').textContent = aboutWifeElement.value || 'Не указано';
+            }
+
+            const photoElement = document.getElementById('photo');
+            if (photoElement && document.getElementById('review-photo')) {
+                document.getElementById('review-photo').textContent =
+                    photoElement.files.length > 0 ? 'Фото загружено' : 'Фото не загружено';
+            }
+        }
+
+        // Helper function to get checkbox values with "other" option
+        function getCheckboxValuesWithOther(name) {
+            const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+            if (!checkboxes || checkboxes.length === 0) return '';
+
+            const values = Array.from(checkboxes).map(el => {
+                if (el.value === 'other') {
+                    const otherInput = document.querySelector(`input[name="${name}-other"]`);
+                    return otherInput ? otherInput.value : '';
+                }
+                return el.value;
+            }).filter(val => val);
+
+            return values.join(', ');
+        }
+
+        // Helper function to get radio button values with "other" option
+        function getRadioValueWithOther(name) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            if (!selected) return '';
+
+            if (selected.value === 'other') {
+                const otherInput = document.querySelector(`input[name="${name}-other"]`);
+                return otherInput ? otherInput.value : '';
+            }
+            return selected.value;
+        }
+
+        // Scroll to top button
+        if (scrollToTopBtn) {
+            scrollToTopBtn.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize form
+        showPage(currentPage);
+        updateNavigation();
+    </script>
+</body>
+
+</html>
