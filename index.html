@@ -341,11 +341,12 @@
                 <div class="form-page" data-page="4">
                     <h2 class="form-title">Сколько Вам лет?</h2>
                     <div class="form-group">
-                        <input type="text" class="age-display" id="age-value" value="25" readonly />
+                        <!-- Raqamni ko‘rsatish va yozish uchun input -->
+                        <input type="number" class="age-display" id="age-value" value="25" min="18" max="65" />
 
+                        <!-- Slider -->
                         <div class="range-container">
-                            <input type="range" id="age" name="age" min="18" max="65" value="25"
-                                oninput="document.getElementById('age-value').value = this.value" />
+                            <input type="range" id="age" name="age" min="18" max="65" value="25" />
                             <div class="range-labels">
                                 <span>18</span>
                                 <span>65</span>
@@ -353,6 +354,25 @@
                         </div>
                     </div>
                 </div>
+
+                <script>
+                    const ageInput = document.getElementById('age-value');
+                    const ageSlider = document.getElementById('age');
+
+                    // Slider o'zgarganda inputga yozilsin
+                    ageSlider.addEventListener('input', () => {
+                        ageInput.value = ageSlider.value;
+                    });
+
+                    // Inputga yozilganda slider ham yangilansin (chegara tekshiruvi bilan)
+                    ageInput.addEventListener('input', () => {
+                        let val = parseInt(ageInput.value);
+                        if (!isNaN(val) && val >= 18 && val <= 65) {
+                            ageSlider.value = val;
+                        }
+                    });
+                </script>
+
 
 
                 <!-- Page 5 -->
