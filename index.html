@@ -320,12 +320,10 @@
 
                 <!-- Page 3 -->
                 <div class="form-page" data-page="3">
-                    <h2 class="form-title">Заполните анкету</h2>
-
                     <div class="form-group">
                         <label for="region">Выберите Ваш город</label>
                         <select id="region">
-                            <option value="">-- Выберите Ваш город --</option>
+                            <!-- <option value="">-- Выберите Ваш город --</option> -->
                             <option value="Ташкент">Ташкент</option>
                             <option value="Самарканд">Самарканд</option>
                             <option value="Бухара">Бухара</option>
@@ -342,7 +340,7 @@
 
                 <!-- Page 4 -->
                 <div class="form-page" data-page="4">
-                    <h2 class="form-title">Заполните анкету</h2>
+                    <h2 class="form-title">Сколько Вам лет?</h2>
                     <div class="form-group">
                         <input type="text" class="age-display" id="age-value" value="25" readonly />
 
@@ -384,11 +382,11 @@
                                 <input type="radio" name="prayer" value="no"> Нет
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="prayer" value="other"> Свой вариант
+                                <input type="radio" name="prayer" value="other" id="prayer-other-radio"> Свой вариант
                             </label>
                         </div>
-                        <input type="text" name="prayer-other" class="other-input" placeholder="Укажите ваш вариант"
-                            style="display: none;">
+                        <input type="text" name="prayer-other" id="prayer-other-input" class="other-input"
+                            placeholder="Укажите ваш вариант" style="display: none;">
                     </div>
                     <div class="form-group">
                         <label>Носите ли Вы бороду?</label>
@@ -400,11 +398,11 @@
                                 <input type="radio" name="beard" value="no"> Нет
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="beard" value="other"> Свой вариант
+                                <input type="radio" name="beard" value="other" id="beard-other-radio"> Свой вариант
                             </label>
                         </div>
-                        <input type="text" name="beard-other" class="other-input" placeholder="Укажите ваш вариант"
-                            style="display: none;">
+                        <input type="text" name="beard-other" id="beard-other-input" class="other-input"
+                            placeholder="Укажите ваш вариант" style="display: none;">
                     </div>
                 </div>
 
@@ -466,7 +464,7 @@
                             <option value="3">3</option>
                             <option value="other">Свой вариант</option>
                         </select>
-                        <input type="text" id="other-children" class="other-input" placeholder="Укажите ваш вариант"
+                        <input type="text" id="other-children" class="other-input" placeholder="Свой вариант"
                             style="display: none;">
                     </div>
                     <div class="form-group">
@@ -531,18 +529,71 @@
                             style="display: none;">
                     </div>
                 </div>
+                <style>
+                    .form-group {
+                        position: relative;
+                        margin-bottom: 30px;
+                    }
 
+                    .form-group label {
+                        display: block;
+                        margin-bottom: 8px;
+                        font-weight: bold;
+                    }
+
+                    input[type="range"] {
+                        width: 100%;
+                        display: block;
+                        margin-top: 10px;
+                    }
+
+                    .range-min,
+                    .range-max {
+                        position: absolute;
+                        top: 60%;
+                        transform: translateY(-50%);
+                        font-size: 14px;
+                        color: #555;
+                    }
+
+                    .range-min {
+                        left: 0;
+                    }
+
+                    .range-max {
+                        right: 0;
+                    }
+
+                    #heightValue,
+                    #weightValue {
+                        display: block;
+                        text-align: center;
+                        margin-top: 8px;
+                        border: 1px solid #ccc;
+                        padding: 4px 8px;
+                        border-radius: 6px;
+                        width: fit-content;
+                        margin-left: auto;
+                        margin-right: auto;
+                        font-weight: 500;
+                        background-color: #f9f9f9;
+                    }
+                </style>
                 <!-- Page 9 -->
                 <div class="form-page" data-page="9">
                     <h2 class="form-title">Заполните анкету</h2>
                     <div class="form-group">
                         <label for="height">Ваш Рост (в сантиметрах): <span id="heightValue">185</span> см</label>
+                        <span class="range-min">150</span>
                         <input type="range" id="height" min="150" max="220" value="185">
+                        <span class="range-max">220</span>
                     </div>
 
                     <div class="form-group">
                         <label for="weight">Ваш Вес (в килограммах): <span id="weightValue">70</span> кг</label>
+                        <span class="range-min">45</span>
                         <input type="range" id="weight" min="45" max="120" value="70">
+                        <span class="range-max">120</span>
                     </div>
 
                     <div class="form-group">
@@ -830,7 +881,7 @@
         </div>
     </footer>
 
-    <button class="scroll-to-top" id="scrollToTop" title="Наверх">↑</button>
+    <!-- <button class="scroll-to-top" id="scrollToTop" title="Наверх">↑</button> -->
     <script src="js/script.js"></script>
     <script>
         // DOM elements
@@ -1332,6 +1383,48 @@
         document.getElementById('region')?.addEventListener('change', updateNavigation);
         document.getElementById('customCity')?.addEventListener('input', updateNavigation);
         // Добавьте обработчики для других полей по аналогии
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Намаз
+            const prayerRadios = document.querySelectorAll('input[name="prayer"]');
+            const prayerOtherInput = document.getElementById('prayer-other-input');
+
+            prayerRadios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (this.value === 'other') {
+                        prayerOtherInput.style.display = 'block';
+                    } else {
+                        prayerOtherInput.style.display = 'none';
+                    }
+                });
+            });
+
+            // Борода
+            const beardRadios = document.querySelectorAll('input[name="beard"]');
+            const beardOtherInput = document.getElementById('beard-other-input');
+
+            beardRadios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (this.value === 'other') {
+                        beardOtherInput.style.display = 'block';
+                    } else {
+                        beardOtherInput.style.display = 'none';
+                    }
+                });
+            });
+
+            // Национальность
+            const nationalitySelect = document.getElementById('nationality');
+            const otherNationalityInput = document.getElementById('other-nationality');
+
+            nationalitySelect.addEventListener('change', function () {
+                if (this.value === 'other') {
+                    otherNationalityInput.style.display = 'block';
+                } else {
+                    otherNationalityInput.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 

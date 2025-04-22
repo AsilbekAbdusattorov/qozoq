@@ -1382,7 +1382,7 @@ function translatePage(lang) {
     // "Другая" opsiyasini qo‘shamiz
     const otherOption = document.createElement("option");
     otherOption.value = "Другая";
-    otherOption.textContent = "Другая (введите вручную)";
+    otherOption.textContent = "Свой вариант";
     citySelect.appendChild(otherOption);
 
     // Reset custom city input
