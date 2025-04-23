@@ -506,19 +506,27 @@
                 <!-- Page 8 -->
                 <div class="form-page" data-page="8">
                     <div class="form-group">
-                        <label for="desired-wife-age">Возраст Будущей жены?</label>
+                        <label for="age-range">Возраст будущей жены?</label>
 
-                        <input type="text" class="age-display" id="desired-wife-age-value" value="30" readonly />
-
-                        <div class="range-slider">
-                            <div class="range-container">
-                                <input type="range" id="desired-wife-age" min="18" max="65" value="30"
-                                    oninput="document.getElementById('desired-wife-age-value').value = this.value" />
-                                <div class="range-labels">
-                                    <span>18</span>
-                                    <span>65</span>
-                                </div>
+                        <div class="range-wrapper">
+                            <div class="range-values">
+                                <input type="number" id="min-age" value="18" readonly>
+                                <span>–</span>
+                                <input type="number" id="max-age" value="38" readonly>
                             </div>
+                            <div class="range-slider">
+                                <div class="range-track"></div>
+                                <input type="range" id="range-min" min="18" max="65" value="18">
+                                <input type="range" id="range-max" min="18" max="65" value="38">
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="range-labels">
+                            <span>18</span>
+                            <span>65</span>
                         </div>
                     </div>
 
@@ -548,55 +556,111 @@
                     </div>
                 </div>
                 <style>
-                    .form-group {
-                        position: relative;
-                        margin-bottom: 30px;
+                    .range-wrapper {
+                        max-width: 600px;
+                        margin: auto;
                     }
 
-                    .form-group label {
-                        display: block;
-                        margin-bottom: 8px;
-                        font-weight: bold;
+                    .range-values {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        margin-bottom: 15px;
                     }
 
-                    input[type="range"] {
-                        width: 100%;
-                        display: block;
-                        margin-top: 10px;
-                    }
-
-                    .range-min,
-                    .range-max {
-                        position: absolute;
-                        top: 60%;
-                        transform: translateY(-50%);
-                        font-size: 14px;
-                        color: #555;
-                    }
-
-                    .range-min {
-                        left: 0;
-                    }
-
-                    .range-max {
-                        right: 0;
-                    }
-
-                    #heightValue,
-                    #weightValue {
-                        display: block;
+                    .range-values input {
+                        width: 70px;
                         text-align: center;
-                        margin-top: 8px;
+                        padding: 6px;
+                        font-size: 16px;
+                        border-radius: 8px;
                         border: 1px solid #ccc;
-                        padding: 4px 8px;
-                        border-radius: 6px;
-                        width: fit-content;
-                        margin-left: auto;
-                        margin-right: auto;
-                        font-weight: 500;
-                        background-color: #f9f9f9;
+                    }
+
+                    .range-slider {
+                        position: relative;
+                        height: 36px;
+                    }
+
+                    .range-slider input[type="range"] {
+                        position: absolute;
+                        width: 100%;
+                        pointer-events: none;
+                        -webkit-appearance: none;
+                        background: none;
+                        top: 0;
+                        height: 36px;
+                        margin: 0;
+                        z-index: 2;
+                    }
+
+                    .range-slider input[type="range"]::-webkit-slider-thumb {
+                        pointer-events: auto;
+                        -webkit-appearance: none;
+                        width: 16px;
+                        height: 32px;
+                        border-radius: 8px;
+                        background: #e290c0;
+                        cursor: pointer;
+                        border: none;
+                    }
+
+                    .range-slider input[type="range"]::-moz-range-thumb {
+                        pointer-events: auto;
+                        width: 16px;
+                        height: 32px;
+                        border-radius: 8px;
+                        background: #e290c0;
+                        cursor: pointer;
+                        border: none;
+                    }
+
+                    .range-track {
+                        position: absolute;
+                        top: 0;
+                        height: 100%;
+                        width: 100%;
+                        background: #f1f1f1;
+                        border-radius: 18px;
+                        z-index: 1;
+                        overflow: hidden;
+                    }
+
+                    .range-track::before {
+                        content: '';
+                        position: absolute;
+                        height: 100%;
+                        background: #d1367a;
+                        left: 0;
+                        right: 0;
+                        border-radius: 18px;
+                        z-index: 0;
                     }
                 </style>
+                <script>
+                    const minRange = document.getElementById('range-min');
+                    const maxRange = document.getElementById('range-max');
+                    const minAge = document.getElementById('min-age');
+                    const maxAge = document.getElementById('max-age');
+
+                    function updateMin() {
+                        if (parseInt(minRange.value) > parseInt(maxRange.value)) {
+                            minRange.value = maxRange.value;
+                        }
+                        minAge.value = minRange.value;
+                    }
+
+                    function updateMax() {
+                        if (parseInt(maxRange.value) < parseInt(minRange.value)) {
+                            maxRange.value = minRange.value;
+                        }
+                        maxAge.value = maxRange.value;
+                    }
+
+                    minRange.addEventListener('input', updateMin);
+                    maxRange.addEventListener('input', updateMax);
+                </script>
                 <!-- Page 9 -->
                 <div class="form-page" data-page="9">
                     <div class="form-group">
