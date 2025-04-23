@@ -510,20 +510,16 @@
 
                         <div class="range-wrapper">
                             <div class="range-values">
-                                <input type="number" id="min-age" value="18" readonly>
+                                <input type="number" id="min-age" min="18" max="65" value="18">
                                 <span>–</span>
-                                <input type="number" id="max-age" value="38" readonly>
+                                <input type="number" id="max-age" min="18" max="65" value="38">
                             </div>
                             <div class="range-slider">
-                                <div class="range-track"></div>
+                                <div class="range-track" id="range-track"></div>
                                 <input type="range" id="range-min" min="18" max="65" value="18">
                                 <input type="range" id="range-max" min="18" max="65" value="38">
                             </div>
                         </div>
-
-
-
-
                         <div class="range-labels">
                             <span>18</span>
                             <span>65</span>
@@ -624,16 +620,13 @@
                         background: #f1f1f1;
                         border-radius: 18px;
                         z-index: 1;
-                        overflow: hidden;
                     }
 
-                    .range-track::before {
-                        content: '';
+                    .range-track-fill {
                         position: absolute;
+                        top: 0;
                         height: 100%;
                         background: #d1367a;
-                        left: 0;
-                        right: 0;
                         border-radius: 18px;
                         z-index: 0;
                     }
@@ -644,23 +637,40 @@
                     const minAge = document.getElementById('min-age');
                     const maxAge = document.getElementById('max-age');
 
-                    function updateMin() {
-                        if (parseInt(minRange.value) > parseInt(maxRange.value)) {
-                            minRange.value = maxRange.value;
-                        }
-                        minAge.value = minRange.value;
+                    function updateFromSlider() {
+                        let minVal = parseInt(minRange.value);
+                        let maxVal = parseInt(maxRange.value);
+
+                        if (minVal > maxVal) minVal = maxVal; // Ensure the min value is not greater than the max value
+                        if (maxVal < minVal) maxVal = minVal; // Ensure the max value is not smaller than the min value
+
+                        minAge.value = minVal;
+                        maxAge.value = maxVal;
                     }
 
-                    function updateMax() {
-                        if (parseInt(maxRange.value) < parseInt(minRange.value)) {
-                            maxRange.value = minRange.value;
-                        }
-                        maxAge.value = maxRange.value;
+                    function updateFromInput() {
+                        let minVal = parseInt(minAge.value);
+                        let maxVal = parseInt(maxAge.value);
+
+                        // Limit the input values within the range of 18 to 65
+                        if (minVal < 18) minVal = 18;
+                        if (maxVal > 65) maxVal = 65;
+                        if (minVal > maxVal) minVal = maxVal;
+                        if (maxVal < minVal) maxVal = minVal;
+
+                        minAge.value = minVal;
+                        maxAge.value = maxVal;
+                        minRange.value = minVal;
+                        maxRange.value = maxVal;
                     }
 
-                    minRange.addEventListener('input', updateMin);
-                    maxRange.addEventListener('input', updateMax);
+                    minRange.addEventListener('input', updateFromSlider);
+                    maxRange.addEventListener('input', updateFromSlider);
+                    minAge.addEventListener('input', updateFromInput);
+                    maxAge.addEventListener('input', updateFromInput);
                 </script>
+
+
                 <!-- Page 9 -->
                 <div class="form-page" data-page="9">
                     <div class="form-group">
